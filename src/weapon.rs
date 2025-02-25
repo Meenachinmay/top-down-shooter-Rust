@@ -47,8 +47,8 @@ fn fire_weapon(
         commands.spawn((
             SpriteBundle {
                 sprite: Sprite {
-                    color: Color::rgb(1.0, 1.0, 0.0), // Yellow
-                    custom_size: Some(Vec2::new(10.0, 5.0)),
+                    color: Color::rgb(0.0, 1.0, 0.0), // green
+                    custom_size: Some(Vec2::new(15.0, 10.0)),
                     ..default()
                 },
                 transform: Transform {

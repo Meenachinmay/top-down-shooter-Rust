@@ -15,34 +15,35 @@ pub struct Player {
     pub speed: f32,
 }
 
+// In player.rs
 fn spawn_player(mut commands: Commands) {
-    // Spawn the player entity
+    // First spawn the player entity and capture its ID
     let player_entity = commands.spawn((
         SpriteBundle {
             sprite: Sprite {
-                color: Color::rgb(1.0, 0.0, 0.0), // Red color
+                color: Color::rgb(1.0, 0.0, 0.0), // Red color for player
                 custom_size: Some(Vec2::new(30.0, 30.0)),
                 ..default()
             },
-            transform: Transform::from_translation(Vec3::new(0.0, 0.0, 0.0)),
+            transform: Transform::from_xyz(0.0, 0.0, 0.1), // Positive Z to stay above background
             ..default()
         },
         Player { speed: 200.0 },
         Weapon { cooldown: Timer::new(std::time::Duration::from_secs_f32(0.5), TimerMode::Repeating) },
     )).id();
 
-    // Add a gun (white line) as a child of the player
+    // Now add the gun as a child entity with a visible color
     commands.entity(player_entity).with_children(|parent| {
         parent.spawn(SpriteBundle {
             sprite: Sprite {
-                color: Color::rgb(1.0, 1.0, 1.0), // White color
+                // Using a dark blue color that will stand out against the white background
+                color: Color::rgb(0.0, 0.3, 0.8),
                 custom_size: Some(Vec2::new(20.0, 3.0)), // A thin rectangular line
                 ..default()
             },
             transform: Transform {
                 // Position the gun to extend from the center of the player
-                // The gun will stick out of the player square by 10 pixels
-                translation: Vec3::new(15.0, 0.0, 0.1),
+                translation: Vec3::new(15.0, 0.0, 0.01), // Slightly above player in Z to ensure it's visible
                 ..default()
             },
             ..default()

@@ -3,6 +3,7 @@ mod enemy;
 mod weapon;
 mod score;
 mod ui;
+mod background;
 
 use bevy::prelude::*;
 use player::PlayerPlugin;
@@ -10,10 +11,12 @@ use enemy::EnemyPlugin;
 use weapon::WeaponPlugin;
 use score::ScorePlugin;
 use ui::UiPlugin;
+use background::BackgroundPlugin;
 
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
+        .add_plugins(BackgroundPlugin)
         .add_plugins(PlayerPlugin)
         .add_plugins(EnemyPlugin)
         .add_plugins(WeaponPlugin)

@@ -37,7 +37,7 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                     TextStyle {
                         font: font.clone(),
                         font_size: 30.0,
-                        color: Color::WHITE,
+                        color: Color::RED,
                     },
                 ),
                 TextSection::new(
@@ -45,7 +45,7 @@ fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
                     TextStyle {
                         font: font.clone(),
                         font_size: 30.0,
-                        color: Color::WHITE,
+                        color: Color::GREEN,
                     },
                 ),
             ]),
